@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="bind-attribute">
+      <span v-bind:title="message"> 여기에 마우스를 올려두고 잠시 기다리면 제목이 동적으로 바뀝니다! </span>
+      <!--
+      v-bind 속성은 디렉티브를 의미
+      디렉티브는 Vue에서 제공하는 특수 속성임을 나타내는 v- 접두어가 붙어있음
+      렌더링된 DOM에 특수한 반응형 동작을 함
+      여기서는 title 속성을 vuew 인스턴스의 message 프로퍼티로 상태를 유지함
+      -->
+    </div>
+  </body>
+  <script>
+    const AttributeBinding = {
+      data() {
+        return {
+          message: "이 페이지를 다음 시간에 열었습니다. " + new Date().toLocaleString(),
+        };
+      },
+    };
+
+    Vue.createApp(AttributeBinding).mount("#bind-attribute");
+  </script>
+</html>

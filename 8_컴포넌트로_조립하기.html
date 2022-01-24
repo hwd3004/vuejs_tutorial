@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="todo-list-app">
+      <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+      </ol>
+    </div>
+  </body>
+  <script>
+    // https://v3.ko.vuejs.org/guide/introduction.html#%E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9-%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B8%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5
+    // 컴포넌트로 조립하기
+
+    const TodoList = {
+      data() {
+        return {
+          groceryList: [
+            { id: 0, text: "야채" },
+            { id: 1, text: "치즈" },
+            { id: 2, text: "아무거나 먹는거" },
+          ],
+        };
+      },
+    };
+
+    const app = Vue.createApp(TodoList);
+
+    app.component("todo-item", {
+      props: ["todo"],
+      template: `<li>{{ todo.text }}</li>`,
+    });
+
+    app.mount("#todo-list-app");
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="increment">Up vote</button>
+    </div>
+    <script>
+      // https://v3.ko.vuejs.org/guide/data-methods.html#methods
+      // Data 속성
+
+      const app = Vue.createApp({
+        data() {
+          return { count: 4 };
+        },
+        methods: {
+          increment() {
+            this.count++;
+            console.log(this.count);
+          },
+        },
+      });
+
+      const vm = app.mount("#app");
+
+      console.log(vm.$data.count); // 4
+      console.log(vm.count); // 4
+
+      vm.count = 5;
+      console.log(vm.$data.count); // 5
+
+      vm.$data.count = 6;
+      console.log(vm.count); // 6
+
+      vm.increment();
+      console.log(vm.count); // 7
+    </script>
+  </body>
+</html>

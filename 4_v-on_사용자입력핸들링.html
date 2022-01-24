@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="event-handling">
+      <p>{{message}}</p>
+      <button v-on:click="reverseMessage">메세지 좌우반전</button>
+    </div>
+  </body>
+  <script>
+    // https://v3.ko.vuejs.org/guide/introduction.html#%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1-%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%85%E1%85%A7%E1%86%A8-%E1%84%92%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%BC
+    // 사용자 입력 핸들링
+    // v-on 디렉티브를 사용하여 vue 인ㅅ흐턴스에서 메소드를 호출하는 이벤트리스너 추가 가능
+    const EventHandling = {
+      data() {
+        return {
+          message: "메세지 데이터",
+        };
+      },
+
+      methods: {
+        reverseMessage() {
+          this.message = this.message.split("").reverse().join("");
+        },
+      },
+    };
+
+    Vue.createApp(EventHandling).mount("#event-handling");
+  </script>
+</html>

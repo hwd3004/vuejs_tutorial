@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 영어 한글 공백만 가능, 통과하면 false, 걸리면 true
+      const regUsername = /[^\w\sㄱ-힣]|[\_]/g;
+      console.log(regUsername.test("!"));
+
+      // 영어 숫자만 가능, 통과하면 false, 걸리면 true
+      const regEmailName = /[^a-z|A-Z|0-9]/g;
+      console.log(regEmailName.test("asd"));
+
+      // 숫자 3,4자리만 가능, 통과하면 true, 걸리면 false
+      const regNumber = /^[0-9_-]{3,4}$/;
+      console.log(regNumber.test("1231"));
+    </script>
+  </body>
+</html>

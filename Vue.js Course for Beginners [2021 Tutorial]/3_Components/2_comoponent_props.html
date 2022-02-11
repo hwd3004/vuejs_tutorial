@@ -90,20 +90,12 @@
       },
     });
     app.component("custom-input", {
-      /*
-      template: `
-        <label>
-          {{ label }}
-          <input type="text" v-model="inputValue" />
-        </label>
-        `,
-      */
       // v-model는 modelValue prop을 전달하고 update:modelValue 이벤트를 emit 하는 것과 같다
       // 축약된 방식
       template: `
       <label>
         {{ label }}
-        <input type="text" modelValue="inputValue" />
+        <input type="text" v-model="inputValue" />
       </label>
       `,
       props: ["label", "modelValue"],
@@ -114,6 +106,8 @@
           },
           set(value) {
             console.log(value);
+            // 부모 컴포넌트에 데이터 전달
+            this.$emit("update:modelValue", value);
           },
         },
       },

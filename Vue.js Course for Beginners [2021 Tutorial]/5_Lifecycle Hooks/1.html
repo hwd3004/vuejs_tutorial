@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: purple;
+        height: 200px;
+        width: 200px;
+      }
+
+      .box.two {
+        background-color: red;
+      }
+
+      .box.three {
+        background-color: blue;
+      }
+
+      [v-cloak] {
+        display: none;
+      }
+
+      input {
+        margin: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <!-- <button @click.right="toggleBox">Toggle Box</button> -->
+      <button @click.prevent.stop="toggleBox">Toggle Box</button>
+      <test-box v-if="isVisible" class="box"></test-box>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({
+      data: function () {
+        return {
+          isVisible: false,
+        };
+      },
+      methods: {
+        toggleBox: function () {
+          this.isVisible = !this.isVisible;
+        },
+      },
+      updated() {
+        console.log("updated");
+      },
+    });
+
+    app.component("test-box", {
+      template: `
+        <div class="box"></div>
+      `,
+      created() {
+        console.log("created");
+      },
+      mounted() {
+        console.log("mounted");
+      },
+      unmounted() {
+        console.log("unmounted");
+      },
+    });
+
+    app.mount("#app");
+  </script>
+</html>

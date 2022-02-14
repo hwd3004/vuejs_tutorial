@@ -116,7 +116,7 @@
       template: `
       <label>
         {{ label }}
-        <input v-model="inputValue" />
+        <input v-bind:type="type" v-model="inputValue" />
       </label>
       `,
       // <input type="text" v-model="inputValue" />

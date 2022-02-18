@@ -137,6 +137,13 @@
           },
         },
       },
+      watch: {
+        inputValue: {
+          handler(value) {
+            console.log("watch : ", value);
+          },
+        },
+      },
       /*
       data() {
         return {
